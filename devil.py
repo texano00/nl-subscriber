@@ -1,6 +1,7 @@
 from devilConfig import *
 
 import sys
+import time
 
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -18,7 +19,7 @@ driver = webdriver.Firefox()
 mail = sys.argv[1]
 
 for form in devilConfig:
-	print "devil is processing form -> " + form['url']
+	print "devil is processing form at -> " + form['url']
 
 	driver.get(form['url'])
 
@@ -37,4 +38,6 @@ for form in devilConfig:
 			driver.find_element_by_css_selector(checkbox).click()
 
 		driver.find_element_by_css_selector(form['submitElement']).click()
+		
+		time.sleep(2)
 		
